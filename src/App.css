@@ -1,0 +1,25 @@
+root {
+  width: 100vw;
+  height: 100vh;
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#title{
+  margin: 5vh 25vw
+}
+
+.control-text{
+  display: inline;
+  margin: 0 1vw;
+}
+
+.session-control{
+  margin: 3vw;
+  border: 0.5vw solid black;
+  padding: 2vh 2vw
+}
