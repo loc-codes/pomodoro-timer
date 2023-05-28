@@ -14,30 +14,27 @@ function App() {
     setLengths(prevLengths => ({...prevLengths, [type]: prevLengths[type] - 1}))
   }
 
-  const countdown = (time) => {
-    let minutes = time
+  const countdown = () => {
+    let minutes = lengths.session
     let seconds = 0
-  
-
-    const intervalId = setInterval(() => {
+    setInterval(() => {
       if (seconds === 0){
         if (minutes === 0){
-          console.log('countdown complete')
-          clearInterval(intervalId)
+          console.log('beep beep beep')
         }
-        else{
-          minutes -= 1
+        else {
+          minutes--
           seconds = 59
         }
       }
       else{
-        seconds -= 1
+        seconds--
       }
-      console.log(minutes, seconds);
+      console.log(minutes, seconds)
     }, 1000)
   }
 
-  countdown(25)
+  //countdown()
   
   return (
     <div className="App">
