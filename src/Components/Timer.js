@@ -1,4 +1,3 @@
-import { counter } from '@fortawesome/fontawesome-svg-core';
 import { useEffect, useState } from 'react';
 
 const Timer = () => {
@@ -15,10 +14,6 @@ const Timer = () => {
         setSeconds(0);
         setisActive(false)
     }
-
-    useEffect(() => {
-        document.title = `Countdown!: ${seconds}`
-    })
 
     //think of this as an alarm clock. when we hit the clear interval in the else block,
     //the alarm clock is still in the webpage, but we have disabled the alarm
