@@ -1,10 +1,13 @@
 import './App.css';
 import TimeControl from './Components/TimeControl';
+import Timer from './Components/Timer';
 import { useState } from 'react'
 
 function App() {
 
   const [lengths, setLengths] = useState({session: 25, break: 5})
+
+  const [isActive, setisActive] = useState(false)
 
   const incrementTime = (type) => {
     setLengths(prevLengths => ({...prevLengths, [type]: prevLengths[type] + 1}))
@@ -34,6 +37,12 @@ function App() {
     }, 1000)
   }
 
+  const toggle = () => {
+    setisActive(!isActive)
+  }
+
+  if (isActive){countdown()}
+
   //countdown()
   
   return (
@@ -45,9 +54,10 @@ function App() {
       </div>
       <div id='timer'>
         <p>Session</p>
+        <p>{lengths.session}:00</p>
       </div>
       <div id='runtime-controls'>
-
+        <button id="start-stop" onClick={toggle}>Play/Pause</button>
       </div>
     </div>
   );
