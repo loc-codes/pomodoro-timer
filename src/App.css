@@ -7,7 +7,8 @@
 }
 
 #title{
-  margin: 5vh 25vw
+  text-align: center;
+  margin: 5vh auto
 }
 
 .control-text{
@@ -15,8 +16,29 @@
   margin: 0 1vw;
 }
 
-.session-control{
-  margin: 3vw;
+
+.time-control{
   border: 0.5vw solid black;
-  padding: 2vh 2vw
+  padding: 1vh 2vw;
+  margin: 0.5vh, auto;
+  text-align: center;
+}
+
+h2 {
+  margin-top: 0.25vh;
+  margin-bottom: 0.25vh;
+}
+
+
+#time-controls {
+  justify-content: center;
+  align-items: center;
+}
+
+
+#clock-container{
+  margin: 4vh 1vw;
+  padding: 2vh 2vw;
+  text-align: center;
+  border: 0.5vw solid black
 }
