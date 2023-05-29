@@ -1,6 +1,10 @@
 import './App.css';
 import TimeControl from './Components/TimeControl';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import beep from './alarm.m4a'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay,faPause,faRedo } from '@fortawesome/free-solid-svg-icons';
+
 
 function App() {
   const [lengths, setLengths] = useState({session: 25, break: 5})
@@ -27,9 +31,10 @@ function App() {
             if (seconds === 0) {
                 if (minutes > 0){
                     setMinutes(prevMins => prevMins -1);
-                    setSeconds(59);
+                    setSeconds(59)
                 } else {
                     setIsSesson(!isSession);
+                    alarm()
                 }
             } else {
                 setSeconds(prevSecs => prevSecs -1);
@@ -40,7 +45,7 @@ function App() {
 }, [isActive, seconds, minutes]);
 
   const incrementTime = (type) => {
-    if (!isActive){
+    if (!isActive && lengths[type] < 60){
       setLengths(prevLengths => ({...prevLengths, [type]: prevLengths[type] + 1}))
     }
     }
@@ -60,31 +65,44 @@ function App() {
     setIsSesson(true)
     setSeconds(0)
     setLengths({session:25,break:5})
-    
+    setMinutes(25)
+    audioRef.current.pause()
+    audioRef.current.currentTime = 0
+
+  }
+
+  const audioRef = useRef()
+
+  const alarm = () => {
+    audioRef.current.play();
   }
   
   return (
     <div className="App">
-      <div id='title'>25+5 Clock</div>
+      <div id="header">
+        <h1 id="title">Pomodoro</h1>
+        <h3>1. (n.) Italian word for 'tomato'.</h3>
+        <h3>2. (n.) A time-management method characterized by 25-minute intervals of focused work followed by short breaks.</h3>
+      </div>
       <div id='time-controls'>
-        <TimeControl type="session" time={lengths.session} incrementTime={incrementTime} decrementTime={decrementTime}/>
-        <TimeControl type="break" time={lengths.break} incrementTime={incrementTime} decrementTime={decrementTime}/>
+          <TimeControl type="session" labelId="session-label" upId="session-increment" lengthId="session-length" downId="session-decrement" time={lengths.session} incrementTime={incrementTime} decrementTime={decrementTime}/>
+          <TimeControl type="break" labelId="break-label" upId="break-increment" lengthId="break-length" downId="break-decrement" time={lengths.break} incrementTime={incrementTime} decrementTime={decrementTime}/>
       </div>
       <div id='clock-container'>
-        <h2>{isSession ? 'Session' : 'Break'}</h2>
-        <h2>{minutes}m {seconds}s</h2>
+        <h1 id="timer-label">{isSession ? 'Session' : 'Break'}</h1>
+        <h2 id="time-left">{String(minutes).padStart(2,'0')}:{String(seconds).padStart(2,'0')}</h2>
         <div id='session-controls'>
-          <button onClick={toggleActive}>{isActive ? 'Stop': 'Start'}</button>
-          <button onClick={reset}>Reset</button>
+        <button onClick={toggleActive} id="start_stop">{isActive ? <FontAwesomeIcon icon={faPause} />: <FontAwesomeIcon icon={faPlay} />}</button>
+          <button onClick={reset} id="reset"><FontAwesomeIcon icon={faRedo} /></button>
         </div>
       </div>
+      <div id="footer">
+        <h5>Powered by React</h5>
+        <h5>Built by Lachlan Young, 2023</h5>
+      </div>
+      <audio ref={audioRef} id="beep" src={beep}/>
     </div>
   );
 }
 
 export default App;
-
-//BUG: reset button drops minute by 1, not sure what cause is
-//TO DO:
-//1. Red text when session gets to 0 mins
-//2.

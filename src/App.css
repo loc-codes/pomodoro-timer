@@ -1,14 +1,19 @@
-#app {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+#root{
+  background-color: #b96464;
   width: 100vw;
-  height: 100vh;
+  margin-top: 10vh;
+  font-size: 1rem;
+  color: white;
+  font-family: Roboto;
 }
 
 #title{
   text-align: center;
-  margin: 5vh auto
+  margin-bottom: 1vh;
+  text-decoration: underline;
 }
 
 .control-text{
@@ -16,29 +21,66 @@
   margin: 0 1vw;
 }
 
+#time-controls{
+  display: flex;
+  justify-content: space-between;
+}
 
 .time-control{
-  border: 0.5vw solid black;
+  border: 1vh solid white;
   padding: 1vh 2vw;
-  margin: 0.5vh, auto;
+  margin: 1vh 1vw;
   text-align: center;
+  width: 45vw;
 }
 
-h2 {
-  margin-top: 0.25vh;
-  margin-bottom: 0.25vh;
+h1, h2, h3, h5{
+  margin: 0.5vh 0.5vw
 }
 
 
-#time-controls {
-  justify-content: center;
-  align-items: center;
-}
 
+
+button {
+  background-color: #b96464;
+  border: none;
+  color: white;
+  font-size: 1rem;
+}
 
 #clock-container{
-  margin: 4vh 1vw;
+  background-image: url("./tomato.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40vh;
+  color: white;
+  margin: 2vh 1vw;
   padding: 2vh 2vw;
   text-align: center;
-  border: 0.5vw solid black
+  font-size: 2rem;
+}
+
+img {
+  width: auto;
+  height: 100%;
+}
+
+#timer-label{
+  padding-top: 17vh;
+  
+}
+
+#header {
+  text-align: center;
+}
+
+#start_stop, #reset {
+  font-size: 2rem;
+}
+
+
+#footer {
+  text-align: center;
+  margin-top: 4.5vh;
 }
