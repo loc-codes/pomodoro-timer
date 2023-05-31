@@ -10,6 +10,11 @@
   font-family: Roboto;
 }
 
+#app {
+  min-width: 350px;
+  
+}
+
 #title{
   text-align: center;
   margin-bottom: 1vh;
@@ -49,6 +54,10 @@ button {
 }
 
 #clock-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-image: url("./tomato.png");
   background-size: contain;
   background-position: center;
@@ -59,16 +68,25 @@ button {
   padding: 2vh 2vw;
   text-align: center;
   font-size: 2rem;
+  min-height: 350px;
+  min-width: 350px;
+  
+  
 }
 
 img {
   width: auto;
   height: 100%;
+  max-height: 500px;  
 }
 
 #timer-label{
-  padding-top: 17vh;
-  
+  margin-top: 10rem;
+  font-size: 3.5rem;
+}
+
+#time-left {
+  font-size: 3rem;
 }
 
 #header {
@@ -76,7 +94,8 @@ img {
 }
 
 #start_stop, #reset {
-  font-size: 2rem;
+  font-size: 1.8rem;
+  border-radius: 100%;
 }
 
 

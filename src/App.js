@@ -81,8 +81,8 @@ function App() {
     <div className="App">
       <div id="header">
         <h1 id="title">Pomodoro</h1>
-        <h3>1. (n.) Italian word for 'tomato'.</h3>
-        <h3>2. (n.) A time-management method characterized by 25-minute intervals of focused work followed by short breaks.</h3>
+        <h3>(n.) Italian word for 'tomato'.</h3>
+        
       </div>
       <div id='time-controls'>
           <TimeControl type="session" labelId="session-label" upId="session-increment" lengthId="session-length" downId="session-decrement" time={lengths.session} incrementTime={incrementTime} decrementTime={decrementTime}/>
